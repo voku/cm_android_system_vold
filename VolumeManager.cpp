@@ -809,14 +809,14 @@ int VolumeManager::shareVolume(const char *label, const char *method) {
     // TODO: Currently only two mounts are supported, defaulting
     // /mnt/sdcard to lun0 and anything else to lun1. Fix this.
     if (0 == strcmp(label, "/mnt/sdcard")) {
-        if ((fd = open("/sys/devices/platform/usb_mass_storage/lun0/file",
+        if ((fd = open("/sys/devices/platform/s3c6410-usbgadget/gadget/lun0/file",
                        O_WRONLY)) < 0) {
             SLOGE("Unable to open ums lunfile (%s)", strerror(errno));
             return -1;
         }
     }
     else {
-        if ((fd = open("/sys/devices/platform/usb_mass_storage/lun1/file",
+        if ((fd = open("/sys/devices/platform/s3c6410-usbgadget/gadget/lun1/file",
                        O_WRONLY)) < 0) {
             SLOGE("Unable to open ums lunfile (%s)", strerror(errno));
             return -1;
@@ -863,13 +863,13 @@ int VolumeManager::unshareVolume(const char *label, const char *method) {
     // TODO: Currently only two mounts are supported, defaulting
     // /mnt/sdcard to lun0 and anything else to lun1. Fix this.
     if (0 == strcmp(label, "/mnt/sdcard")) {
-        if ((fd = open("/sys/devices/platform/usb_mass_storage/lun0/file", O_WRONLY)) < 0) {
+        if ((fd = open("/sys/devices/platform/s3c6410-usbgadget/gadget/lun0/file", O_WRONLY)) < 0) {
             SLOGE("Unable to open ums lunfile (%s)", strerror(errno));
             return -1;
         }
     }
     else {
-        if ((fd = open("/sys/devices/platform/usb_mass_storage/lun1/file", O_WRONLY)) < 0) {
+        if ((fd = open("/sys/devices/platform/s3c6410-usbgadget/gadget/lun1/file", O_WRONLY)) < 0) {
             SLOGE("Unable to open ums lunfile (%s)", strerror(errno));
             return -1;
         }
